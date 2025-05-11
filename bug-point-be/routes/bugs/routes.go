@@ -1,17 +1,17 @@
 package bugRoutes
 
 import (
-	handlers "bug-point-be/handlers/bugs"
+	handlers "bug-point-be/handlers/tasks"
 
 	"github.com/gofiber/fiber/v2"
 )
 
 func SetupBugRoutes(app *fiber.App) {
 	api := app.Group("/api/v1")
-	bugs := api.Group("/bugs")
-	bugs.Get("/", handlers.GetBugs)
-	bugs.Get("/:id", handlers.GetSingleBug)
-	bugs.Post("/", handlers.CreateBug)
-	bugs.Delete("/:id", handlers.DeleteBug)
-	bugs.Put("/:id", handlers.UpdateBug)
+	bugs := api.Group("/tasks")
+	bugs.Get("/:laneId/", handlers.GetTasks)
+	bugs.Get("/:id", handlers.GetSingleTask)
+	bugs.Post("/:laneId/", handlers.CreateTask)
+	bugs.Delete("/:id", handlers.DeleteTask)
+	bugs.Patch("/:id", handlers.UpdateTask)
 }
