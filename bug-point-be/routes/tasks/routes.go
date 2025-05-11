@@ -1,4 +1,4 @@
-package bugRoutes
+package taskRoutes
 
 import (
 	handlers "bug-point-be/handlers/tasks"
@@ -6,7 +6,7 @@ import (
 	"github.com/gofiber/fiber/v2"
 )
 
-func SetupBugRoutes(app *fiber.App) {
+func SetupTaskRoutes(app *fiber.App) {
 	api := app.Group("/api/v1")
 	bugs := api.Group("/tasks")
 	bugs.Get("/:laneId/", handlers.GetTasks)

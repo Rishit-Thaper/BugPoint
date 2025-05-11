@@ -3,7 +3,7 @@ package main
 import (
 	config "bug-point-be/configs"
 	db "bug-point-be/db"
-	bugRoutes "bug-point-be/routes/bugs"
+	taskRoutes "bug-point-be/routes/tasks"
 	"log"
 
 	"github.com/gofiber/fiber/v2"
@@ -23,7 +23,7 @@ func main() {
 	}()
 
 	app := fiber.New()
-	bugRoutes.SetupBugRoutes(app)
+	taskRoutes.SetupTaskRoutes(app)
 	app.Get("/", func(c *fiber.Ctx) error {
 		return c.JSON(&fiber.Map{"data": "Hello world to the API"})
 	})
