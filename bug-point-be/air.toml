@@ -1,0 +1,34 @@
+# Config file for air (github.com/air-verse/air)
+
+# Working directory (equivalent to the old 'root')
+dir = "."
+
+# Temporary directory for build artifacts (equivalent to the old 'tmp_dir')
+tmp_dir = "tmp"
+
+# Command to build the binary
+cmd = "go build -o ./tmp/main ."
+
+# Binary to execute after building
+bin = "./tmp/main"
+
+# File extensions to watch
+include_ext = ["go"]
+
+# Directories to exclude from watching
+exclude_dir = ["tmp", "client"]
+
+# Files to exclude from watching
+exclude_file = []
+
+# Delay (in milliseconds) before rebuilding
+delay = 1000
+
+# Whether to stop on error
+stop_on_error = true
+
+# Log file for build output
+log = "air.log"
+
+# Clean up temporary directory on exit
+clean_on_exit = true
