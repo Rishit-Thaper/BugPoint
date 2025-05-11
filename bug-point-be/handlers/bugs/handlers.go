@@ -32,7 +32,7 @@ func CreateBug(c *fiber.Ctx) error {
 	if err := c.BodyParser(&bug); err != nil {
 		return c.Status(fiber.StatusBadRequest).JSON(fiber.Map{"error": "Invalid Input"})
 	}
-	if bug.Title == "" || bug.Description == "" || bug.Status != "" {
+	if bug.Title == "" || bug.Description == "" || bug.Status == "" {
 		return c.Status(fiber.StatusBadRequest).JSON(fiber.Map{"error": "Required fields are missing"})
 	}
 	bugsCollection := db.GetCollection("bugs")
@@ -128,5 +128,5 @@ func GetSingleBug(c *fiber.Ctx) error {
 		return c.Status(fiber.StatusNotFound).JSON(fiber.Map{"error": "Bug don't exist"})
 	}
 
-	return c.Status(fiber.StatusOK).JSON(fiber.Map{"message": "Bug deleted successfully!"})
+	return c.Status(fiber.StatusOK).JSON(fiber.Map{"data": bug, "message": "Bug fetched successfully!"})
 }
